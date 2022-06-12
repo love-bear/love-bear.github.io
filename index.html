@@ -17,9 +17,29 @@
 </head>
     <body>
         <!--这里放音乐哦 -->
-		<audio autoplay="autopaly" loop muted>
+<!-- 		<audio autoplay="autopaly" loop muted>
 			<source src="./iloveu.mp3" audio="" mp3"="">
-		</audio>
+		</audio> -->
+	<audio src="./iloveu.mp3" id="audios" autoplay preload loop="loop"></audio>  
+
+	<script>
+	function audioAutoPlay(id){  
+	    var audio = document.getElementById(id),
+		play = function(){  
+		    audio.play();  
+		    document.removeEventListener("touchstart",play, false);  
+		};  
+	    audio.play();  
+	    document.addEventListener("WeixinJSBridgeReady", function () {  
+		play();  
+	    }, false);  
+	    document.addEventListener('YixinJSBridgeReady', function() {  
+		play();  
+	    }, false);  
+	    document.addEventListener("touchstart",play, false); 
+	} 
+	audioAutoPlay('audios');
+	</script> 			
 
         <div id="main">
             <!-- 不兼容的提醒 -->
