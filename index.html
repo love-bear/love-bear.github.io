@@ -20,9 +20,27 @@
 <!-- 		<audio autoplay="autopaly" loop muted>
 			<source src="./iloveu.mp3" audio="" mp3"="">
 		</audio> -->
-	<audio src="./iloveu.mp3" id="audios" autoplay preload loop="loop"></audio>  
-
+	<audio src="./iloveu.mp3" id="audios" autoplay preload loop="loop"></audio>
+	    
 	<script>
+	var play = true;
+	document.addEventListener("WeixinJSBridgeReady", function () {       
+		if(play){
+		    var music = document.getElementById('audios');
+		    music.play();
+		    play = false;
+		}       
+	    }, false);
+	$('body').on('touchstart',function(e) {
+		if(play){
+		    var music = document.getElementById('audios');
+		    music.play();
+		    play = false;
+		}
+	    });
+	</script> 
+
+<!-- 	<script>
 	function audioAutoPlay(id){  
 	    var audio = document.getElementById(id),
 		play = function(){  
@@ -39,7 +57,7 @@
 	    document.addEventListener("touchstart",play, false); 
 	} 
 	audioAutoPlay('audios');
-	</script> 			
+	</script> 			 -->
 
         <div id="main">
             <!-- 不兼容的提醒 -->
